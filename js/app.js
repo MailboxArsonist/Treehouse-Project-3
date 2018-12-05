@@ -3,6 +3,12 @@
 //Declare Global Variables
 const $heartJs = $('#color option:gt(2)');
 const $jsPuns = $('#color option:lt(3)');
+const $creditCard = $('#credit-card');
+const $paypal = $('div p:eq(0)');
+$paypal.hide();
+const $bitcoin = $('div p:eq(1)');
+$bitcoin.hide();
+
 //Set focus onto '#name' input.
 $('#name').focus();
 
@@ -37,3 +43,88 @@ $('#design').on('change', (event) => {
     $('#color').append($jsPuns);
   }
 });
+
+//if its select theme call error message
+
+//create taxt box which contains total price
+const totalPrice = $('<p>Total Price: <span id="cost"></span></p>');
+$('.activities').append(totalPrice);
+
+//loop through all cbox
+  //declare price
+  //if 0 is selected price +200
+  //if i is selected + 100
+  //add to span #cost
+const priceCalc = () => {
+  let price = 0;
+
+  $('input[type=checkbox]').each(function(index){
+
+      if($(this).is(':checked') && index === 0){
+        price += 200;
+      } else if ($(this).is(':checked')) {
+        price += 100;
+      }
+  });
+
+  $('#cost').text(price);
+};
+
+
+
+const disableActivity = (inputClicked, cbox) => {
+  //if input clicked is 1 && input is checked => disable 3
+     //else if clicked && input isnt checked => enable 3
+  if($(inputClicked).attr('name') === 'js-frameworks' && $(inputClicked).is(':checked')){
+    $(cbox).eq(3).prop('disabled', true);
+  } else if ($(inputClicked).attr('name') === 'js-frameworks') {
+    $(cbox).eq(3).prop('disabled', false);
+  }
+  //if input clicked is 3 && input is checked => disable 1
+     //else if clicked && input isnt checked => enable 1
+  if($(inputClicked).attr('name') === 'express' && $(inputClicked).is(':checked')){
+    $(cbox).eq(1).prop('disabled', true);
+  } else if ($(inputClicked).attr('name') === 'express') {
+    $(cbox).eq(1).prop('disabled', false);
+  }
+
+//if input clicked is 2 && input is checked => disable 4
+   //else if clicked && input isnt checked => enable 4
+   if($(inputClicked).attr('name') === 'js-libs' && $(inputClicked).is(':checked')){
+     $(cbox).eq(4).prop('disabled', true);
+   } else if ($(inputClicked).attr('name') === 'js-libs') {
+     $(cbox).eq(4).prop('disabled', false);
+   }
+//if input clicked is 4 && input is checked => disable 2
+   //else if clicked && input isnt checked => enable 2
+   if($(inputClicked).attr('name') === 'node' && $(inputClicked).is(':checked')){
+     $(cbox).eq(2).prop('disabled', true);
+   } else if ($(inputClicked).attr('name') === 'node') {
+     $(cbox).eq(2).prop('disabled', false);
+   }
+}
+
+//add listener on inputs
+$('input[type=checkbox]').on('change', function(event){
+  const cboxList = $('input[type=checkbox]');
+  disableActivity(event.target, cboxList);
+  priceCalc();
+});
+
+
+//click listener on payment option
+$('#payment').on('change', function(){
+  if(this.value === 'credit card'){
+    $creditCard.show();
+    $bitcoin.hide();
+    $paypal.hide();
+  } else if (this.value === 'paypal') {
+    $paypal.show();
+    $bitcoin.hide();
+    $creditCard.hide();
+  } else if (this.value === 'bitcoin') {
+    $bitcoin.show();
+    $paypal.hide();
+    $creditCard.hide();
+  }
+})
