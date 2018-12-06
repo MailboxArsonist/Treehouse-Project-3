@@ -170,7 +170,7 @@ function isValidName(name) {
 }
 //Listener on name input, calls isValidName to validate the input. nameValid variable will keep track of validation
 //if false will show error message and set border to red, true will remove message and border = green
-$('#name').on('focus input', function(event){
+$('#name').on('focusout input', function(event){
   if(isValidName(event.target.value)){
     $(this).css('borderColor', '#3EC300');
     nameError.hide();
