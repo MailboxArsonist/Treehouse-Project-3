@@ -1,4 +1,4 @@
-/* ================================= 
+/* =================================
   Base Element Styles
 ==================================== */
 
@@ -15,30 +15,40 @@ button {
 body {
   font: 1em/1.5;
   color: #184f68;
-	background: #accbd9;
+  background: #4b6cb7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 header {
-	text-align: center;  
+	text-align: center;
+  color: #fff;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 h1 {
-	font-size: 2.5em;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+	font-size: 2.8em;
 	margin: 0;
+  font-weight: 300;
+}
+
+header span {
+  font-weight: lighter;
 }
 
 a {
   text-decoration: none;
 }
 
-/* ================================= 
+/* =================================
   Form Element Styles
 ==================================== */
 
 form {
 	padding: .875em 1.875em 1.875em;
-	background: #85b5ca;
+	background: #FFF;
+  border-radius: 15px;
 }
 
 fieldset,
@@ -54,7 +64,7 @@ fieldset {
 
 legend,
 button {
-	font-size: 1.25em;	
+	font-size: 1.25em;
 }
 
 legend {
@@ -78,15 +88,16 @@ label {
 
 input,
 select {
-	margin-bottom: 1.125em;	
+	margin-bottom: 1.125em;
 }
 
 input {
 	font-size: 1em;
 	font-weight: 500;
 	padding: .8em;
-	background: #c1deeb;
-	border: 2px solid #c1deeb;
+	background: #fff;
+	border: 1px solid #D8D8D8;
+  border-radius: 2px;
 	outline: none;
 }
 
@@ -113,7 +124,37 @@ button:hover {
 	background: #184c62;
 }
 
-/* ================================= 
+.error{
+  font-size: 0.8rem;
+  color: #F93943;
+  margin-left: 15px;
+}
+
+.cboxError{
+  font-size: 0.8rem;
+  color: #F93943;
+  font-weight: 400;
+  margin-left: 30px;
+}
+
+.conflict{
+  text-decoration: line-through;
+  color: gray;
+}
+
+.cc{
+  font-size: 0.8rem;
+  color: #F93943;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 20px;
+  display: inline-block;
+
+}
+
+
+
+/* =================================
   Page Styles
 ==================================== */
 
@@ -135,7 +176,7 @@ button:hover {
 	margin-top: 1.25em;
 }
 
-/* ================================= 
+/* =================================
   Helper Classes
 ==================================== */
 
@@ -149,7 +190,7 @@ button:hover {
   clear: both;
 }
 
-/* ================================= 
+/* =================================
   Media Queries
 ==================================== */
 
